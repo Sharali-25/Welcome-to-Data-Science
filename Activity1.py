@@ -1,8 +1,20 @@
-import numpy as np
-data_type =[('name','S15')('class',int)('height',float)]
-students_details =[('James',5,48.5), ('Nail',6,52.5),('Paul', 5, 42.10), ('Pit', 5, 40.11)]
-students=np.array(students_details,dtype=data_type)
-print("Original Array:")
-print(students)
-print("Sort by height")
-print(np.sort(students, order='height'))
+import matplotlib.pyplot as plt
+
+students_name =["Shardul","Sharali","Shayna","Siddhartha","Sharol","Vedanshi","Vivian","Shingini"]
+students_marks = [35,60,20,45,25,40,25,40]
+
+marks_perc = []
+for x in students_marks:
+    res = (x/50)*100
+    marks_perc.append(res)
+
+print(marks_perc)
+
+def percentage_bar_chart():
+    plt.bar(students_name,marks_perc)
+    plt.title("Student's Perecentage Graph")
+    plt.xlabel("Student's Names")
+    plt.ylabel("Student's Percentage")
+    plt.show()
+
+percentage_bar_chart()
