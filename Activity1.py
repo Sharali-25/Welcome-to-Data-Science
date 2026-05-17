@@ -1,20 +1,26 @@
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-students_name =["Shardul","Sharali","Shayna","Siddhartha","Sharol","Vedanshi","Vivian","Shingini"]
-students_marks = [35,60,20,45,25,40,25,40]
+sns.set(style="ticks")
+weather = pd.read_csv("Test.csv")
+print(weather.head(10))
+print(weather.info())
 
-marks_perc = []
-for x in students_marks:
-    res = (x/50)*100
-    marks_perc.append(res)
+sns.barplot(x=weather["humidity"],y=weather["temperature"])
+plt.show()
 
-print(marks_perc)
+sns.displot(weather["humidity"],kde=False, rug=True)
+plt.show()
 
-def percentage_bar_chart():
-    plt.bar(students_name,marks_perc)
-    plt.title("Student's Perecentage Graph")
-    plt.xlabel("Student's Names")
-    plt.ylabel("Student's Percentage")
-    plt.show()
+sns.jointplot(x=weather["humidity"],y=weather["temperature"], kind="hist")
+plt.show()
 
-percentage_bar_chart()
+sns.pairplot(weather[["humidity","temperature","air_pollution_index"]])
+plt.show()
+
+sns.stripplot(x=weather["weather_type"],y=weather["temperature"],jitter=True)
+plt.show()
+
+sns.swarmplot(x=weather["humidity"],y=weather["temperature"])
+plt.show()
